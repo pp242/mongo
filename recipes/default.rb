@@ -20,7 +20,10 @@ end
 
 apt_update
 
-package 'mongodb-org'
+
+package 'mongodb-org' do
+	action :upgrade
+end
 
 service 'mongod' do
 	supports status: true, restart: true, reload: true
@@ -33,6 +36,7 @@ template '/etc/systemd/system/mongod.service' do
   owner 'root'
   group 'root'
   mode '0755'
+  notifies :restart, 'service[mongod]'
 end	
 
 template '/etc/mongod.conf' do
@@ -40,6 +44,7 @@ template '/etc/mongod.conf' do
   owner 'root'
   group 'root'
   mode '0755'
+  notifies :restart, 'service[mongod]'
 end	
 
 
