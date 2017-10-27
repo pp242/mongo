@@ -23,7 +23,7 @@ describe 'mongodb-server::default' do
     end 
     
     it 'update' do
-      expect(chef_run).to update_package 'apt'
+      expect(chef_run).to update_apt_update 'update'
     end 
 
     it 'starts the mongod' do
