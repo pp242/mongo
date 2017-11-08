@@ -47,8 +47,5 @@ describe 'mongodb-server::default' do
       expect(chef_run).to create_template '/etc/mongod.conf'
       template = chef_run.template('/etc/mongod.conf')
     end 
-
-
-
   end
 end
